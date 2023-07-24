@@ -1,0 +1,14 @@
+{
+  "name": "claseversiones",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "start": "node apps.js",
+    "test": ""
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
