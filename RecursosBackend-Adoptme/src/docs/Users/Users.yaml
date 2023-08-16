@@ -1,0 +1,88 @@
+paths:
+  /api/users:    
+    get:
+      summary: Obtener todos los usuarios de la BD
+      tags: 
+        - Users
+      responses:
+        "200":
+          description: Si la consulta a los usarios es satisfactoria
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/UsersResponse'
+        "500":
+          description: Si hubo un error en el momento de la consulta 
+  /api/users/{userId}:
+     get:
+      summary: Obtener un usuario por un parametro BD
+      tags: 
+        - Users
+      responses:
+        "200":
+          description: Si la consulta a los usarios es satisfactoria
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/UsersResponse'
+        "500":
+          description: Si hubo un error en el momento de la consulta 
+     put:
+      summary: Actualizar un usuario por un parametro BD
+      tags: 
+        - Users
+      parameters:
+        - name: userId
+          in: paths
+          requires: true
+      requestBodies:
+        required: tru
+      content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/requestBodie'
+components:
+  schemas:
+    User: 
+      type: Object
+      properties:
+        _id:
+          type: ObjectId
+          description: ID auto incrementarl mongo
+        first_name:
+          type: string
+          description: nombre del usuario
+        last_name:
+          type: string
+          description: apellido del usuario
+      example:
+        _id: ObjectId(123fdad56)
+        first_name: Andrea
+        last_name: Lopez
+    requestBodies:
+      UpdateUserPayload:
+        type: Object
+        properties:
+          first_name:
+            type: string
+            description: nombre del usuario
+          last_name:
+            type: string
+            description: apellido del usuario
+      example:
+        first_name: Andrea
+        last_name: Lopez  
+    
+    UsersResponses:
+      type: Object
+      properties: 
+        status:
+          type: string,
+          enum: [success,error]
+          description: formas de respuesta
+        payload:
+          type: array,
+          description: array de usuarios
+          item: 
+           $ref: '#components/schemas/User'
+

@@ -1,0 +1,38 @@
+paths:
+  /api/pets:    
+    get:
+      summary: Obtener todos los usuarios de la BD
+      tags: 
+        - Pets
+      responses:
+        "200":
+          description: Si la consulta a los pets es satisfactoria
+        "500":
+          description: Si hubo un error en el momento de la consulta
+    put:
+      summary: Metodo para actualizar 
+      tags: 
+        - Pets
+      responses:
+        "200":
+          description: Si la consulta a los pets es satisfactoria
+        "500":
+          description: Si hubo un error en el momento de la consulta  
+    post:
+      summary: Metodo para actualizar 
+      tags: 
+        - Pets
+      responses:
+        "200":
+          description: Si la consulta a los pets es satisfactoria
+        "500":
+          description: Si hubo un error en el momento de la consulta
+    delete:
+      summary: Metodo para actualizar 
+      tags: 
+        - Pets
+      responses:
+        "200":
+          description: Si la consulta a los pets es satisfactoria
+        "500":
+          description: Si hubo un error en el momento de la consulta
