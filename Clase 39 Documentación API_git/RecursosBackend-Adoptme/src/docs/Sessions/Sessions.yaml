@@ -1,0 +1,61 @@
+paths:
+  /api/sessions/register:
+    post:
+      tags:
+        - Sessions
+      summary: Register a new User to DB
+      responses:
+        "200":
+          description: User registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/RegisterResponse'
+        "400":
+          description: Wrong params
+        "500":
+          description: Internal Server Error
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#components/requestBodies/RegisterUserPayload'
+
+components:
+  schemas:
+    RegisterResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [success, error]
+          description: Sessions response status
+        payload:
+          type: ObjectId
+          description: Registered User ObjectId
+        example:
+          status: success
+          payload: ObjectId(123abc456efg)
+
+  requestBodies:
+    RegisterUserPayload:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: User First Name
+        last_name:
+          type: string
+          description: User Last Name
+        email:
+          type: string
+          description: User email (Unique field)
+        password:
+          type: string
+          description: User password
+      example:
+        first_name: Horuhe
+        last_name: Maro
+        email: horuhe@gmail.com
+        password: 123abc456

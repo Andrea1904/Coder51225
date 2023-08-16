@@ -1,0 +1,48 @@
+paths:
+  /api/adoptions/{userId}/{petId}:
+    post:
+      tags:
+        - Adoptions
+      summary: Creates a new Adoption in the DB
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: User id
+          schema:
+            $type: string
+        - name: petId
+          in: path
+          required: true
+          description: Pet id
+          schema:
+            $type: string
+      responses:
+        "200":
+          description: Pets fetched successfully from the DB
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/NewAdoptionResponse'
+        "400":
+          description: Invalid body format.
+        "404":
+          description: User or Pet Not found
+        "500":
+          description: Internal Server Error
+
+components:
+  schemas:
+    NewAdoptionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [success, error]
+          description: Adoption response status
+        message:
+          type: string
+          description: Success response message
+      example:
+        status: success
+        message: Pet adopted

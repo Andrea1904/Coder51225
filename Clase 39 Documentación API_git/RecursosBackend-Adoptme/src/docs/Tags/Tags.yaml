@@ -1,0 +1,9 @@
+tags:
+  - name: Users
+    description: Users REST API Routes
+  - name: Pets
+    description: Pets REST API Routes
+  - name: Sessions
+    description: Sessions REST API Routes
+  - name: Adoptions
+    description: Adoptions REST API Routes
